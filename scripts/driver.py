@@ -13,7 +13,7 @@ def publish_sonar_data():
     min_range = rospy.get_param("min_range", 0.5)
     max_range = rospy.get_param("max_range", 50.0)
 
-    sonar_driver = Ping1D()
+    sonar_driver = Ping1D("/dev/ttyUSB0",115200)
     sonar_driver.connect_serial(device_name=usb_port)
     rospy.init_node("single_beam_sonar_node")
     pub_sonar = rospy.Publisher("sonar", Range, queue_size=1)
